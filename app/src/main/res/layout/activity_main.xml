@@ -5,7 +5,24 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 
-    <TextView android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_create_notif"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Notification"/>
+
+    <Button
+        android:id="@+id/btn_create_notif_with_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Notification With Action"
+        android:layout_below="@id/btn_create_notif"/>
+
+    <Button
+        android:id="@+id/btn_create_notif_with_multi_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Notification With Multi Action"
+        android:layout_below="@id/btn_create_notif_with_action"/>
 
 </RelativeLayout>

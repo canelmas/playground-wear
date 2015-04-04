@@ -4,14 +4,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        findViewById(R.id.btn_create_notif).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_with_action).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_with_multi_actions).setOnClickListener(this);
     }
 
     @Override
@@ -34,5 +39,26 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+
+            case R.id.btn_create_notif:
+                NotificationHelper.raiseNotification(this);
+                break;
+            case R.id.btn_create_notif_with_action:
+                NotificationHelper.raiseNotification(this, NotificationHelper.mapAction(this));
+                break;
+            case R.id.btn_create_notif_with_multi_actions:
+                NotificationHelper.raiseNotification(this, NotificationHelper.browseAction(this), NotificationHelper.mapAction(this));
+                break;
+
+            default:
+                break;
+        }
+
     }
 }
