@@ -9,20 +9,50 @@
         android:id="@+id/btn_create_notif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Notification"/>
+        android:text="Simple Notification"/>
 
     <Button
         android:id="@+id/btn_create_notif_with_action"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Notification With Action"
+        android:text="Notification With Action"
         android:layout_below="@id/btn_create_notif"/>
 
     <Button
         android:id="@+id/btn_create_notif_with_multi_actions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Create Notification With Multi Action"
+        android:text="Notification With Multi Action"
         android:layout_below="@id/btn_create_notif_with_action"/>
+
+    <Button
+        android:id="@+id/btn_create_notif_big_style"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification With Big Style"
+        android:layout_below="@id/btn_create_notif_with_multi_actions"/>
+
+    <TextView
+        android:id="@+id/section_wearable_only_actions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Wearable Extensions"
+        android:layout_below="@id/btn_create_notif_big_style"
+        android:textSize="18sp"
+        android:padding="10dp"/>
+
+    <Button
+        android:id="@+id/btn_create_notif_wear_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification With Wearable-Only Action"
+        android:layout_below="@id/section_wearable_only_actions"/>
+
+    <Button
+        android:id="@+id/btn_create_notif_with_wear_extensions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification With Wearable Extension"
+        android:layout_below="@id/btn_create_notif_wear_action"/>
 
 </RelativeLayout>

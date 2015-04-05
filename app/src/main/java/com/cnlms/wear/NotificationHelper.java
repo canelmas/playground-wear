@@ -3,9 +3,11 @@ package com.cnlms.wear;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.view.Gravity;
 
 /**
  * Created by can on 04/04/15.
@@ -19,11 +21,19 @@ public final class NotificationHelper {
 
     //  Default Values
     private static final String NOTIF_CONTENT_TITLE = "Wear-Showcase";
-    private static final String NOTIF_CONTENT_TEXT = "Lorem Ipsum Lorem Ipsum Lorem Ipsum";
+    private static final String NOTIF_CONTENT_TEXT = "Content Text";
     private static final int NOTIF_SMALL_ICON = R.drawable.abc_ic_voice_search_api_mtrl_alpha;
+
+    private static final String CONTENT_BIG_TEXT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit tristique augue, eget tempor urna dignissim suscipit. Nunc pulvinar mattis diam. Nunc at consectetur ligula. Ut orci leo, mollis eu lobortis sit amet, luctus eget nisi. Nulla bibendum ex eu arcu convallis, ut pellentesque urna commodo. ";
 
     private NotificationHelper() {}
 
+    /**
+     * Returns map action.
+     *
+     * @param context
+     * @return          map action
+     */
     public static NotificationCompat.Action mapAction(final Context context) {
         return new NotificationCompat.Action(
                 android.R.drawable.ic_dialog_map,
@@ -32,11 +42,40 @@ public final class NotificationHelper {
         );
     }
 
+    /**
+     * Returns browse action
+     *
+     * @param context
+     * @return          browse action
+     */
     public static NotificationCompat.Action browseAction(final Context context) {
         return new NotificationCompat.Action(
                 android.R.drawable.ic_search_category_default,
                 "Show on Browser",
                 browserPendingIntent(context)
+        );
+    }
+
+    /**
+     * Returns reply actoin
+     *
+     * @param context
+     * @return          reply action
+     */
+    public static NotificationCompat.Action replyAction(final Context context) {
+        return new NotificationCompat.Action(
+                R.drawable.abc_ic_voice_search_api_mtrl_alpha,
+                "Reply",
+                PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0)
+        );
+
+    }
+
+    public static NotificationCompat.Action viewAction(final Context context) {
+        return new NotificationCompat.Action(
+                android.R.drawable.ic_menu_slideshow,
+                "Show",
+                PendingIntent.getActivity(context, 0, new Intent(context, ViewDetailsActivity.class), 0)
         );
     }
 
@@ -55,6 +94,15 @@ public final class NotificationHelper {
         intent.setData(Uri.parse("http://www.google.com/wear"));
 
         return PendingIntent.getActivity(context, 0, intent, 0);
+
+    }
+
+    public static PendingIntent viewPendingIntent(final Context context) {
+
+        final Intent intent = new Intent(context, ViewDetailsActivity.class);
+
+        return PendingIntent.getActivity(context,0,intent,0);
+
     }
 
     public static void raiseNotification(final Context context) {
@@ -74,7 +122,85 @@ public final class NotificationHelper {
                 context,
                 builder
         );
+
     }
+
+    public static void raiseNotificationWithWearableAction(final Context context,
+                                                           final NotificationCompat.Action action1,
+                                                           final NotificationCompat.Action action2,
+                                                           final NotificationCompat.Action wearableAction) {
+
+        final NotificationCompat.Builder builder = defaultBuilder(context);
+
+        builder.addAction(action1);
+        builder.addAction(action2);
+        builder.extend(new NotificationCompat.WearableExtender().addAction(wearableAction)); // won't be displayed on phone; only on wearable
+
+        raiseNotification(
+                context,
+                builder
+        );
+
+    }
+
+    public static void raiseNotificationWithBigStyle(final Context context) {
+
+        final NotificationCompat.Builder builder = defaultBuilder(context);
+
+        builder.setLargeIcon(
+                BitmapFactory.decodeResource(
+                        context.getResources(),
+                        android.R.drawable.sym_action_chat
+                )
+        ).setContentIntent(viewPendingIntent(context)).
+                addAction(replyAction(context));
+
+        //  Big Style
+        NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle();
+        style.bigText(CONTENT_BIG_TEXT);
+
+        builder.setStyle(style);
+
+        raiseNotification(context, builder);
+    }
+
+    public static void raiseNotificationWithWearableExntensions(final Context context) {
+
+        /*builder.setLargeIcon(
+                BitmapFactory.decodeResource(
+                        context.getResources(),
+                        android.R.drawable.sym_action_chat
+                )
+        ).*/
+
+        //  Wearable Extensions
+        final NotificationCompat.WearableExtender wearableExtender = new NotificationCompat.WearableExtender();
+
+        wearableExtender.addAction(mapAction(context));
+        wearableExtender.setHintHideIcon(true);
+        wearableExtender.setBackground(
+                BitmapFactory.decodeResource(context.getResources(), R.drawable.wear)
+        );
+
+        wearableExtender.setContentIcon(R.drawable.gplus);
+        wearableExtender.setContentIconGravity(Gravity.END);
+
+        final NotificationCompat.Builder builder = defaultBuilder(context);
+
+        builder.setContentIntent(viewPendingIntent(context))
+                .addAction(replyAction(context))
+                .extend(wearableExtender);
+
+        //  Big Style
+        /*NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle();
+        style.bigText(CONTENT_BIG_TEXT);
+
+        builder.setStyle(style);*/
+
+        raiseNotification(context, builder);
+
+    }
+
 
     private static void raiseNotification(final Context context, final NotificationCompat.Builder builder) {
 

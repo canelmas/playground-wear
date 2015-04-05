@@ -1,5 +1,7 @@
 package com.cnlms.wear;
 
+import android.content.Intent;
+import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -7,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 
-public class MainActivity extends ActionBarActivity implements View.OnClickListener {
+public final class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +19,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         findViewById(R.id.btn_create_notif).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_with_action).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_with_multi_actions).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_big_style).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_wear_action).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_with_wear_extensions).setOnClickListener(this);
     }
 
     @Override
@@ -49,11 +54,32 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.btn_create_notif:
                 NotificationHelper.raiseNotification(this);
                 break;
+
             case R.id.btn_create_notif_with_action:
                 NotificationHelper.raiseNotification(this, NotificationHelper.mapAction(this));
                 break;
+
             case R.id.btn_create_notif_with_multi_actions:
-                NotificationHelper.raiseNotification(this, NotificationHelper.browseAction(this), NotificationHelper.mapAction(this));
+                NotificationHelper.raiseNotification(this,
+                        NotificationHelper.browseAction(this),
+                        NotificationHelper.mapAction(this)
+                );
+                break;
+
+            case R.id.btn_create_notif_big_style:
+                NotificationHelper.raiseNotificationWithBigStyle(this);
+                break;
+
+            case R.id.btn_create_notif_wear_action:
+                NotificationHelper.raiseNotificationWithWearableAction(this,
+                        NotificationHelper.browseAction(this),
+                        NotificationHelper.mapAction(this),
+                        NotificationHelper.replyAction(this)
+                );
+                break;
+
+            case R.id.btn_create_notif_with_wear_extensions:
+                NotificationHelper.raiseNotificationWithWearableExntensions(this);
                 break;
 
             default:
