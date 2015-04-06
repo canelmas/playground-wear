@@ -55,4 +55,11 @@
         android:text="Notification With Wearable Extension"
         android:layout_below="@id/btn_create_notif_wear_action"/>
 
+    <Button
+        android:id="@+id/btn_create_notif_voice_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification With Voice Input Action"
+        android:layout_below="@id/btn_create_notif_with_wear_extensions"/>
+
 </RelativeLayout>

@@ -30,7 +30,10 @@ Android Wear Showcase
 * WearableExtender.setBackground() should have 400x400 for non scrolling, 640x400 for backgrounds that support parallax scrolling. These bitmaps should be in **drawable-nodpi**
 * Other non-bitmap resources for wearable notifications e.g. WearableExtender.setContentIcon(), should be in **drawable-hdpi**
 
-### 1.2. Voice Input
+### 1.2. Receiving Voice Input
+* Voice Input should be added as notification action
+* Use RemoteInput.getResultsFromInten() instead of Intent.getExtras() to obtain the voice result. Voice input is stored as ClipData.
+* Pre-defined text responses (max 5), in addition to voice input can be set RemoteInput.setChoices()
 
 ### 1.3. Pages
 

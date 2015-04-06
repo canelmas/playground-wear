@@ -22,6 +22,7 @@ public final class MainActivity extends ActionBarActivity implements View.OnClic
         findViewById(R.id.btn_create_notif_big_style).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_wear_action).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_with_wear_extensions).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_voice_input).setOnClickListener(this);
     }
 
     @Override
@@ -80,6 +81,10 @@ public final class MainActivity extends ActionBarActivity implements View.OnClic
 
             case R.id.btn_create_notif_with_wear_extensions:
                 NotificationHelper.raiseNotificationWithWearableExntensions(this);
+                break;
+
+            case R.id.btn_create_notif_voice_input:
+                NotificationHelper.raiseNotificationWithVoiceInput(this);
                 break;
 
             default:

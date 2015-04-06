@@ -21,6 +21,10 @@
             android:name=".ViewDetailsActivity"
             android:label="Details" />
 
+        <activity
+            android:name=".ReplyActivity"
+            android:label="Reply" />
+
     </application>
 
 </manifest>

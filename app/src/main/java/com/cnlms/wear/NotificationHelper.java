@@ -7,6 +7,7 @@ import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
+import android.support.v4.app.RemoteInput;
 import android.view.Gravity;
 
 /**
@@ -25,6 +26,9 @@ public final class NotificationHelper {
     private static final int NOTIF_SMALL_ICON = R.drawable.abc_ic_voice_search_api_mtrl_alpha;
 
     private static final String CONTENT_BIG_TEXT = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla blandit tristique augue, eget tempor urna dignissim suscipit. Nunc pulvinar mattis diam. Nunc at consectetur ligula. Ut orci leo, mollis eu lobortis sit amet, luctus eget nisi. Nulla bibendum ex eu arcu convallis, ut pellentesque urna commodo. ";
+
+    //  Voice Input
+    public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
 
     private NotificationHelper() {}
 
@@ -57,7 +61,7 @@ public final class NotificationHelper {
     }
 
     /**
-     * Returns reply actoin
+     * Returns reply action
      *
      * @param context
      * @return          reply action
@@ -66,7 +70,7 @@ public final class NotificationHelper {
         return new NotificationCompat.Action(
                 R.drawable.abc_ic_voice_search_api_mtrl_alpha,
                 "Reply",
-                PendingIntent.getActivity(context, 0, new Intent(context, MainActivity.class), 0)
+                PendingIntent.getActivity(context, 0, new Intent(context, ReplyActivity.class), PendingIntent.FLAG_UPDATE_CURRENT)
         );
 
     }
@@ -196,6 +200,30 @@ public final class NotificationHelper {
         style.bigText(CONTENT_BIG_TEXT);
 
         builder.setStyle(style);*/
+
+        raiseNotification(context, builder);
+
+    }
+
+    public static void raiseNotificationWithVoiceInput(final Context context) {
+
+        //  remote input
+        final RemoteInput remoteInput = new RemoteInput.Builder(EXTRA_VOICE_REPLY)
+                .setLabel(context.getString(R.string.reply_label))
+                .setChoices(context.getResources().getStringArray(R.array.reply_choices))
+                .build();
+
+        final NotificationCompat.Builder builder = defaultBuilder(context);
+
+        builder.extend(
+                new NotificationCompat.WearableExtender()
+                        .addAction(
+                                new NotificationCompat.Action.Builder(
+                                        R.drawable.abc_ic_voice_search_api_mtrl_alpha,
+                                        "Reply",
+                                        PendingIntent.getActivity(context, 0, new Intent(context, ReplyActivity.class), PendingIntent.FLAG_UPDATE_CURRENT)
+                                ).addRemoteInput(remoteInput).build()
+                        ));
 
         raiseNotification(context, builder);
 
