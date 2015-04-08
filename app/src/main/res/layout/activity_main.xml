@@ -62,4 +62,11 @@
         android:text="Notification With Voice Input Action"
         android:layout_below="@id/btn_create_notif_with_wear_extensions"/>
 
+    <Button
+        android:id="@+id/btn_create_notif_multi_pages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notification With Multiple Pages"
+        android:layout_below="@id/btn_create_notif_voice_input"/>
+
 </RelativeLayout>

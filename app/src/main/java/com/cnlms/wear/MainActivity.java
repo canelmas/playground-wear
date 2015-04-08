@@ -1,7 +1,5 @@
 package com.cnlms.wear;
 
-import android.content.Intent;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -23,6 +21,7 @@ public final class MainActivity extends ActionBarActivity implements View.OnClic
         findViewById(R.id.btn_create_notif_wear_action).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_with_wear_extensions).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_voice_input).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_multi_pages).setOnClickListener(this);
     }
 
     @Override
@@ -80,11 +79,15 @@ public final class MainActivity extends ActionBarActivity implements View.OnClic
                 break;
 
             case R.id.btn_create_notif_with_wear_extensions:
-                NotificationHelper.raiseNotificationWithWearableExntensions(this);
+                NotificationHelper.raiseNotificationWithWearableExtensions(this);
                 break;
 
             case R.id.btn_create_notif_voice_input:
                 NotificationHelper.raiseNotificationWithVoiceInput(this);
+                break;
+
+            case R.id.btn_create_notif_multi_pages:
+                NotificationHelper.raiseNotificationWithMultiPages(this);
                 break;
 
             default:

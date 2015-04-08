@@ -36,5 +36,6 @@ Android Wear Showcase
 * Pre-defined text responses (max 5), in addition to voice input can be set RemoteInput.setChoices()
 
 ### 1.3. Pages
+* Extra pages are Notification instances, added via WearableExtender().addPage(notification) or addPages(notification:Collections)
 
 ### 1.4. Stacking Notifications

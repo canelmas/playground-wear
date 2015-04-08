@@ -1,5 +1,6 @@
 package com.cnlms.wear;
 
+import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -138,7 +139,9 @@ public final class NotificationHelper {
 
         builder.addAction(action1);
         builder.addAction(action2);
-        builder.extend(new NotificationCompat.WearableExtender().addAction(wearableAction)); // won't be displayed on phone; only on wearable
+
+        // won't be displayed on phone; only on wearable
+        builder.extend(new NotificationCompat.WearableExtender().addAction(wearableAction));
 
         raiseNotification(
                 context,
@@ -168,14 +171,7 @@ public final class NotificationHelper {
         raiseNotification(context, builder);
     }
 
-    public static void raiseNotificationWithWearableExntensions(final Context context) {
-
-        /*builder.setLargeIcon(
-                BitmapFactory.decodeResource(
-                        context.getResources(),
-                        android.R.drawable.sym_action_chat
-                )
-        ).*/
+    public static void raiseNotificationWithWearableExtensions(final Context context) {
 
         //  Wearable Extensions
         final NotificationCompat.WearableExtender wearableExtender = new NotificationCompat.WearableExtender();
@@ -224,6 +220,35 @@ public final class NotificationHelper {
                                         PendingIntent.getActivity(context, 0, new Intent(context, ReplyActivity.class), PendingIntent.FLAG_UPDATE_CURRENT)
                                 ).addRemoteInput(remoteInput).build()
                         ));
+
+        raiseNotification(context, builder);
+
+    }
+
+    public static void raiseNotificationWithMultiPages(final Context context) {
+
+        final NotificationCompat.Builder builder = defaultBuilder(context);
+
+        builder.setContentIntent(viewPendingIntent(context))
+                .addAction(mapAction(context))
+                .addAction(browseAction(context));
+
+        //  Second and Third Page Notification Style
+        NotificationCompat.BigTextStyle style = new NotificationCompat.BigTextStyle();
+        style.setSummaryText("Summary Text");
+        style.bigText(CONTENT_BIG_TEXT);
+        style.setBigContentTitle("Biiig Content Title");
+
+        final Notification secondPage = new NotificationCompat.Builder(context).setStyle(style).build();
+
+        final Notification thirdPage = new NotificationCompat.Builder(context).setStyle(style).build();
+
+        builder.extend(
+                new NotificationCompat.WearableExtender()
+                        .setContentIcon(R.drawable.gplus)
+                        .addPage(secondPage)
+                        .addPage(thirdPage)
+        ).build();
 
         raiseNotification(context, builder);
 
