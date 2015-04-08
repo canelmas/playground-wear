@@ -252,6 +252,8 @@ public final class NotificationHelper {
 
         raiseNotification(context, builder);
 
+        // todo : food recipe pages on wearable, different screen layouts on phone
+
     }
 
 
