@@ -2,6 +2,7 @@ package com.cnlms.wear;
 
 import android.app.Notification;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -10,6 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
 import android.support.v4.app.RemoteInput;
 import android.view.Gravity;
+import android.widget.Toast;
 
 /**
  * Created by can on 04/04/15.
@@ -30,6 +32,9 @@ public final class NotificationHelper {
 
     //  Voice Input
     public static final String EXTRA_VOICE_REPLY = "extra_voice_reply";
+
+    //  Key to used for grouping notifications
+    private static final String GROUP_KEY = "group_key_messages";
 
     private NotificationHelper() {}
 
@@ -239,9 +244,9 @@ public final class NotificationHelper {
         style.bigText(CONTENT_BIG_TEXT);
         style.setBigContentTitle("Biiig Content Title");
 
-        final Notification secondPage = new NotificationCompat.Builder(context).setStyle(style).build();
-
-        final Notification thirdPage = new NotificationCompat.Builder(context).setStyle(style).build();
+        //  second and third pages
+        final Notification secondPage   = new NotificationCompat.Builder(context).setStyle(style).build();
+        final Notification thirdPage    = new NotificationCompat.Builder(context).setStyle(style).build();
 
         builder.extend(
                 new NotificationCompat.WearableExtender()
@@ -256,10 +261,65 @@ public final class NotificationHelper {
 
     }
 
+    public static void raiseNotificationStack(final Context context) {
+
+        raiseNotification(
+                context,
+                defaultBuilder(context)
+                        .setContentTitle("New Message from Can Elmas")
+                        .setContentText("Did you listen the Songbook album by Chris Cornell?")
+                        .setGroup(GROUP_KEY),
+                1
+        );
+
+        raiseNotification(
+                context,
+                defaultBuilder(context)
+                        .setContentTitle("New Message from Chris Cornell")
+                        .setContentText("Did you listen my album?")
+                        .setGroup(GROUP_KEY),
+                2
+        );
+
+    }
+
+    public static void raiseNotificationStackWithSummary(final Context context) {
+
+        raiseNotification(
+                context,
+                defaultBuilder(context)
+                        .setLargeIcon(BitmapFactory.decodeResource(context.getResources(), android.R.drawable.ic_notification_clear_all))
+                        .setStyle(
+                                new NotificationCompat.InboxStyle()
+                                        .addLine("Can Elmas     Did you...")
+                                        .addLine("Chris Cornell     Did you...")
+                                        .setBigContentTitle("2 New Messages")
+                                        .setSummaryText("Summary")
+                        )
+                        .setGroup(GROUP_KEY)
+                        .setGroupSummary(true)
+        );
+    }
+
+
+    public static void raiseNotificationAndDetectDismiss(final Context context) {
+
+        raiseNotification(
+                context,
+                defaultBuilder(context).setDeleteIntent(
+                        PendingIntent.getBroadcast(context, 0, new Intent(context, NotificationDismissedReceiver.class), 0)
+                )
+        );
+
+    }
 
     private static void raiseNotification(final Context context, final NotificationCompat.Builder builder) {
+        raiseNotification(context, builder, 1);
+    }
 
-        final int notificationId = 001;
+    private static void raiseNotification(final Context context,
+                                          final NotificationCompat.Builder builder,
+                                          final int notificationId) {
 
         // Get an instance of the NotificationManager service
         NotificationManagerCompat notificationManager =  NotificationManagerCompat.from(context);
@@ -276,6 +336,13 @@ public final class NotificationHelper {
                         .setContentTitle(NOTIF_CONTENT_TITLE)
                         .setContentText(NOTIF_CONTENT_TEXT);
 
+    }
+
+    public static class NotificationDismissedReceiver extends BroadcastReceiver {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(context,"Notification Dismissed", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

@@ -22,6 +22,9 @@ public final class MainActivity extends ActionBarActivity implements View.OnClic
         findViewById(R.id.btn_create_notif_with_wear_extensions).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_voice_input).setOnClickListener(this);
         findViewById(R.id.btn_create_notif_multi_pages).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_group).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_group_with_summary).setOnClickListener(this);
+        findViewById(R.id.btn_create_notif_and_detect_dismiss).setOnClickListener(this);
     }
 
     @Override
@@ -88,6 +91,18 @@ public final class MainActivity extends ActionBarActivity implements View.OnClic
 
             case R.id.btn_create_notif_multi_pages:
                 NotificationHelper.raiseNotificationWithMultiPages(this);
+                break;
+
+            case R.id.btn_create_notif_group:
+                NotificationHelper.raiseNotificationStack(this);
+                break;
+
+            case R.id.btn_create_notif_group_with_summary:
+                NotificationHelper.raiseNotificationStackWithSummary(this);
+                break;
+
+            case R.id.btn_create_notif_and_detect_dismiss:
+                NotificationHelper.raiseNotificationAndDetectDismiss(this);
                 break;
 
             default:

@@ -25,6 +25,8 @@
             android:name=".ReplyActivity"
             android:label="Reply" />
 
+        <receiver android:name=".NotificationHelper$NotificationDismissedReceiver" android:exported="false"/>
+
     </application>
 
 </manifest>

@@ -1,72 +1,122 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_create_notif"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Simple Notification"/>
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
 
-    <Button
-        android:id="@+id/btn_create_notif_with_action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification With Action"
-        android:layout_below="@id/btn_create_notif"/>
+        <TextView
+            android:id="@+id/section_simple_notification"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Samples"
+            android:textSize="18sp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"/>
 
-    <Button
-        android:id="@+id/btn_create_notif_with_multi_actions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification With Multi Action"
-        android:layout_below="@id/btn_create_notif_with_action"/>
+        <Button
+            android:id="@+id/btn_create_notif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Simple Notification"
+            android:layout_below="@id/section_simple_notification"/>
 
-    <Button
-        android:id="@+id/btn_create_notif_big_style"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification With Big Style"
-        android:layout_below="@id/btn_create_notif_with_multi_actions"/>
+        <Button
+            android:id="@+id/btn_create_notif_with_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Action"
+            android:layout_below="@id/btn_create_notif" />
 
-    <TextView
-        android:id="@+id/section_wearable_only_actions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Wearable Extensions"
-        android:layout_below="@id/btn_create_notif_big_style"
-        android:textSize="18sp"
-        android:padding="10dp"/>
+        <Button
+            android:id="@+id/btn_create_notif_with_multi_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Multi Action"
+            android:layout_below="@id/btn_create_notif_with_action" />
 
-    <Button
-        android:id="@+id/btn_create_notif_wear_action"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification With Wearable-Only Action"
-        android:layout_below="@id/section_wearable_only_actions"/>
+        <Button
+            android:id="@+id/btn_create_notif_big_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Big Style"
+            android:layout_below="@id/btn_create_notif_with_multi_actions" />
 
-    <Button
-        android:id="@+id/btn_create_notif_with_wear_extensions"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification With Wearable Extension"
-        android:layout_below="@id/btn_create_notif_wear_action"/>
 
-    <Button
-        android:id="@+id/btn_create_notif_voice_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification With Voice Input Action"
-        android:layout_below="@id/btn_create_notif_with_wear_extensions"/>
+        <TextView
+            android:id="@+id/section_wearable_only_actions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wearable Extensions"
+            android:layout_below="@id/btn_create_notif_big_style"
+            android:textSize="18sp"
+            android:padding="10dp" />
 
-    <Button
-        android:id="@+id/btn_create_notif_multi_pages"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Notification With Multiple Pages"
-        android:layout_below="@id/btn_create_notif_voice_input"/>
+        <Button
+            android:id="@+id/btn_create_notif_wear_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Wearable-Only Action"
+            android:layout_below="@id/section_wearable_only_actions" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/btn_create_notif_with_wear_extensions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Wearable Extension"
+            android:layout_below="@id/btn_create_notif_wear_action" />
+
+        <Button
+            android:id="@+id/btn_create_notif_voice_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Voice Input Action"
+            android:layout_below="@id/btn_create_notif_with_wear_extensions" />
+
+        <Button
+            android:id="@+id/btn_create_notif_multi_pages"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification With Multiple Pages"
+            android:layout_below="@id/btn_create_notif_voice_input" />
+
+        <Button
+            android:id="@+id/btn_create_notif_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification Stack"
+            android:layout_below="@id/btn_create_notif_multi_pages" />
+
+        <Button
+            android:id="@+id/btn_create_notif_group_with_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification Stack with Summary"
+            android:layout_below="@id/btn_create_notif_group" />
+
+        <TextView
+            android:id="@+id/section_utilities"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Utilities"
+            android:layout_below="@id/btn_create_notif_group_with_summary"
+            android:textSize="18sp"
+            android:padding="10dp" />
+
+        <Button
+            android:id="@+id/btn_create_notif_and_detect_dismiss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Notification with Delete Intent"
+            android:layout_below="@id/section_utilities" />
+
+    </RelativeLayout>
+
+</ScrollView>

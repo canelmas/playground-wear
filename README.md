@@ -9,6 +9,8 @@ Android Wear Showcase
 4. Sending and Syncing Data
 5. Watch Faces
 6. Location
+7. Heads-up Notifications
+8. Lock Screen Notifications
 
 
 # TakeAways
@@ -39,3 +41,9 @@ Android Wear Showcase
 * Extra pages are Notification instances, added via WearableExtender().addPage(notification) or addPages(notification:Collections)
 
 ### 1.4. Stacking Notifications
+* setGroup() should be called on notifications in order to group them and display in a single page on wearable
+* If user has a notification of type T listed (not dismissed yet) and receives another notification of the same type, instead of raising 
+a new notification you may cancel listed one and raise a summary notification by setting setGroup() and setGroupSummary(true) to a notification.
+* InboxStyle is useful for styling summary notification. See Styling with HTML markup and Styling with Spannables for more info.
+* To detect notification dismissal, use either Notification Listener API (4.3) or set a DeleteIntent for the notification
+
