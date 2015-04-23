@@ -13,3 +13,5 @@ build/
 /config/checkstyle/
 
 lint.xml
+
+*.apk
