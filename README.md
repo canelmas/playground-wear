@@ -98,10 +98,20 @@ issuing these notifications. Standard library is sufficient; remove support libr
 * Show the most popular card at the top
 * Keep the cards extremely simple
 * Optimize for speed over customization
-
 ### 2.6. Context Awareness
 * https://developer.android.com/design/wear/context.html
-
 ### 2.7. Creating Custom Layouts
-
+* Wearable UI Library is part of the Google Repository i.e. com.google.android.support:wearable:+
+* Do not port functionality and the UI from a handheld app and expect a good experience
+* Content for square may be cropped on round Wear devices
+### 2.7.1. Layouts
+* WeatchViewStub or BoxInsetLayout
+* WatchViewStub detects screen shape and inflates either round or square layout provided separately
+* BoxInsetLayout lets you define a single layout for both square and round screens
+* BoxInsetLayout padding only applies to square screens
+### 2.7.2. Creating Cards
+* Android Notifications are also displayed as cards
+* To add cards to Android wear activities 
+1. CardFragment 
+2. CardFrame inside CardScrollView
  
