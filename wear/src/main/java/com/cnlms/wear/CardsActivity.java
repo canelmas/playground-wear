@@ -24,6 +24,7 @@ public class CardsActivity extends Activity implements View.OnClickListener {
 
         findViewById(R.id.btn_card_fragment).setOnClickListener(this);
         findViewById(R.id.btn_card_scrollview).setOnClickListener(this);
+        findViewById(R.id.btn_card_listview).setOnClickListener(this);
     }
 
     @Override
@@ -37,6 +38,10 @@ public class CardsActivity extends Activity implements View.OnClickListener {
 
             case R.id.btn_card_scrollview:
                 startActivity(CardScrollViewActivity.newnIntent(this));
+                break;
+
+            case R.id.btn_card_listview:
+                startActivity(ListActivity.newIntent(this));
                 break;
 
             default:

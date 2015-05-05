@@ -114,4 +114,5 @@ issuing these notifications. Standard library is sufficient; remove support libr
 * To add cards to Android wear activities 
 1. CardFragment 
 2. CardFrame inside CardScrollView
- 
+### 2.7.3. Creating Lists
+* WearableListView optimized for werable devices
