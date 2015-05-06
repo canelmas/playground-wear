@@ -116,3 +116,6 @@ issuing these notifications. Standard library is sufficient; remove support libr
 2. CardFrame inside CardScrollView
 ### 2.7.3. Creating Lists
 * WearableListView optimized for werable devices
+### 2.7.4. 2D Picker
+* Design Pattern for showing options in a list e.g. Google search results
+* FragmentGridPageAdapter for providing pages to populate GridViewPager component
