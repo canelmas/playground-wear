@@ -119,3 +119,32 @@ issuing these notifications. Standard library is sufficient; remove support libr
 ### 2.7.4. 2D Picker
 * Design Pattern for showing options in a list e.g. Google search results
 * FragmentGridPageAdapter for providing pages to populate GridViewPager component
+### 2.7.5. Confirmations
+* DelayedConfirmationView
+* ConfimationActivity with SUCCESS_ANIMATION, FAILURE_ANIMATION or OPEN_ON_PHONE_ANIMATION
+### 2.7.6. Exiting Full-Screen Activities
+* By default left-to-right swipe
+* To turn off default gesture :
+<style name="AppTheme" parent="Theme.DeviceDefault">
+    <item name="android:windowSwipeToDismiss">false</item>
+</style>
+* Alternatively you can implement long press to dismiss pattern with DismissOverlayview
+
+## 3. Sending and Syncing Data
+* Wearable API available only with 4.3 (API 18) or higher
+* Latest version of Google Play
+## 3.1 Daya Layer API
+* *Data Item*, data storage with automatic syncing between handheld and wearable
+* *MessageApi*, send messages and for RPC. Start intent on the wearable from the handheld. Greate for one-way requests or
+  request/response communication model
+* *Asset*, for sending blobs of data
+* *WearableListenerService*, to listen important data layer events in a service. Lifecycle is managed by the system; binding to
+and unbinding the service is done by the system.
+* *DataListener*, to listen important data layer events when an activity is in the foreground e.g listen for changes only when
+the user is actively using the app
+* *ChannelApi*, to transfer large data items, such as music and movie files, from handheld to a wearable device.
+* Benefits of using Channel Api for data transfer :
+    1. Reliable
+    2. Transfer streamed data, such as music pulled from a network server or voice data from the microphone
+    3. Saves disk space unlike DataApi class which creates a copy of th assets on the local device before synchronizing with
+    connected devices

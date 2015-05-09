@@ -1,14 +1,12 @@
-package com.cnlms.wear;
+package com.cnlms.wear.list;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
-import android.media.Image;
 import android.support.wearable.view.WearableListView;
-import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.cnlms.wear.R;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.cnlms.wear;
+package com.cnlms.wear.list;
 
 import android.content.Context;
 import android.support.wearable.view.WearableListView;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.cnlms.wear.R;
 
 /**
  * Created by can on 05/05/15.

@@ -22,8 +22,11 @@
         <activity android:name=".CardsActivity"/>
         <activity android:name=".CardFragmentActivity"/>
         <activity android:name=".CardScrollViewActivity"/>
-        <activity android:name=".ListActivity" android:allowEmbedded="true" android:exported="true"/>
-        <activity android:name=".gridviewpager.PickerActivity"/>
+        <activity android:name=".list.ListActivity" android:allowEmbedded="true" android:exported="true"/>
+        <activity android:name=".gridviewpager.GridViewPagerActivity"/>
+        <activity android:name=".confirmations.DelayedConfirmationActivity"/>
+
+        <activity android:name="android.support.wearable.activity.ConfirmationActivity"/>
 
     </application>
 

@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.cnlms.wear.confirmations.DelayedConfirmationActivity;
+
 /**
  * Created by can on 05/05/15.
  */
@@ -41,7 +43,8 @@ public class CardsActivity extends Activity implements View.OnClickListener {
                 break;
 
             case R.id.btn_card_listview:
-                startActivity(ListActivity.newIntent(this));
+//                startActivity(ListActivity.newIntent(this));
+                startActivity(DelayedConfirmationActivity.newIntent(this));
                 break;
 
             default:

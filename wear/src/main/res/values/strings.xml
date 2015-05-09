@@ -2,4 +2,5 @@
     <string name="app_name">Wear-Playground</string>
     <string name="hello_round">Playground round wear</string>
     <string name="hello_square">Playground square wear</string>
+    <string name="long_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur elementum mi orci. Quisque pretium dolor et nisl iaculis convallis. Ut aliquam est turpis, ac vestibulum purus efficitur at. Etiam accumsan varius augue, et facilisis ligula commodo vitae. Integer malesuada nec erat in pharetra.</string>
 </resources>

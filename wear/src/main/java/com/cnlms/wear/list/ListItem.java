@@ -1,4 +1,4 @@
-package com.cnlms.wear;
+package com.cnlms.wear.list;
 
 /**
  * Created by can on 05/05/15.

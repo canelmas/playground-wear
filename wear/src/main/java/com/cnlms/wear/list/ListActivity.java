@@ -1,4 +1,4 @@
-package com.cnlms.wear;
+package com.cnlms.wear.list;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,7 +7,8 @@ import android.os.Bundle;
 import android.support.wearable.view.WearableListView;
 import android.widget.Toast;
 
-import com.cnlms.wear.gridviewpager.PickerActivity;
+import com.cnlms.wear.R;
+import com.cnlms.wear.gridviewpager.GridViewPagerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +51,7 @@ public class ListActivity extends Activity {
                 if (viewHolder.getPosition() != data.size() -1) {
                     Toast.makeText(ListActivity.this, ((ListItemView) viewHolder.itemView).txt.getText(), Toast.LENGTH_SHORT).show();
                 } else {
-                    startActivity(PickerActivity.newIntent(ListActivity.this));
+                    startActivity(GridViewPagerActivity.newIntent(ListActivity.this));
                 }
 
             }

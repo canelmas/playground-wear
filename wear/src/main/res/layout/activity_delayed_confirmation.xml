@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.wearable.view.BoxInsetLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_text_light"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/btn_do_action"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Do"
+        android:layout_gravity="top|center_horizontal" />
+
+    <android.support.wearable.view.DelayedConfirmationView
+        android:id="@+id/delayed_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@android:drawable/ic_dialog_alert"
+        app:circle_color="@color/blue"
+        app:circle_radius="50dp"
+        app:circle_radius_pressed="55dp"
+        app:circle_padding="5dp"
+        app:circle_border_width="10dp"
+        app:circle_border_color="@color/white"/>
+
+    <Button
+        android:id="@+id/btn_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Done"
+        android:layout_gravity="bottom|center_horizontal" />
+
+
+</android.support.wearable.view.BoxInsetLayout>

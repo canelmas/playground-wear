@@ -11,10 +11,10 @@ import com.cnlms.wear.R;
 /**
  * Created by can on 06/05/15.
  */
-public class PickerActivity extends Activity {
+public class GridViewPagerActivity extends Activity {
 
     public static Intent newIntent(final Context context) {
-        return new Intent(context, PickerActivity.class);
+        return new Intent(context, GridViewPagerActivity.class);
     }
 
     @Override
@@ -23,8 +23,8 @@ public class PickerActivity extends Activity {
 
         setContentView(R.layout.activity_picker);
 
-        GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
+        final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
 
-        pager.setAdapter(new GridPagerAdapter(getFragmentManager()));
+        pager.setAdapter(new GridPagerAdapter(this, getFragmentManager()));
     }
 }
