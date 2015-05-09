@@ -10,11 +10,11 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" >
-            <intent-filter>
+            <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            </intent-filter>-->
         </activity>
 
         <activity
@@ -24,6 +24,14 @@
         <activity
             android:name=".ReplyActivity"
             android:label="Reply" />
+
+        <activity android:name=".WearCheckActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <receiver android:name=".NotificationHelper$NotificationDismissedReceiver" android:exported="false"/>
 
