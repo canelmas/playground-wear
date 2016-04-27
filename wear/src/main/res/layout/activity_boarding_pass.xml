@@ -15,32 +15,20 @@
   ~ limitations under the License.
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.wearable.view.BoxInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <android.support.wearable.view.GridViewPager
+        android:id="@+id/grid"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Title:"
-        android:padding="16dp"/>
+        android:layout_height="match_parent" />
 
-    <TextView
-        android:id="@+id/txt_view_title"
-        android:layout_width="match_parent"
+    <android.support.wearable.view.DotsPageIndicator
+        android:id="@+id/dots"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="16dp"/>
+        android:layout_gravity="center_horizontal|bottom" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Content:"
-        android:padding="16dp"/>
-
-    <TextView
-        android:id="@+id/txt_view_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="16dp"/>
-
-</LinearLayout>
+</android.support.wearable.view.BoxInsetLayout>

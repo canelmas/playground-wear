@@ -14,21 +14,32 @@
  * limitations under the License.
  */
 
-package com.cnlms.wear;
+package com.cnlms.wear.datalayerapi;
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.cnlms.wear.R;
 
 /**
- * Created by can on 04/04/15.
+ * Created by can on 11/05/15.
  */
-public final class ViewDetailsActivity extends AppCompatActivity {
+public class FlightInfoFragment extends Fragment {
 
+    public static FlightInfoFragment newInstance() {
+        return new FlightInfoFragment();
+    }
+
+    @Nullable
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        setContentView(R.layout.activity_details);
+        View view = inflater.inflate(R.layout.fragment_flight_info, container, false);
 
+        return view;
     }
 }

@@ -14,33 +14,49 @@
  * limitations under the License.
  */
 
-package com.cnlms.wear.gridviewpager;
+package com.cnlms.wear.datalayerapi;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.wearable.view.DotsPageIndicator;
 import android.support.wearable.view.GridViewPager;
 
 import com.cnlms.wear.R;
+import com.google.android.gms.wearable.DataMap;
 
 /**
- * Created by can on 06/05/15.
+ * Created by can on 10/05/15.
  */
-public class GridViewPagerActivity extends Activity {
+public class BoardingPassActivity extends Activity {
 
-    public static Intent newIntent(final Context context) {
-        return new Intent(context, GridViewPagerActivity.class);
+    public static Intent newIntent(final Context context, DataMap dataMap) {
+
+        Intent intent = new Intent(context, BoardingPassActivity.class);
+
+        intent.putExtras(dataMap.toBundle());
+
+        return intent;
+
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_picker);
+        setContentView(R.layout.activity_boarding_pass);
 
-        final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
+        //  Grid View Pager
+        final GridViewPager pager = (GridViewPager) findViewById(R.id.grid);
 
-        pager.setAdapter(new GridPagerAdapter(this, getFragmentManager()));
+        pager.setAdapter(new BarcodePagerAdapter(this, getFragmentManager()));
+
+        //  Dots Indicator
+        DotsPageIndicator dots = (DotsPageIndicator) findViewById(R.id.dots);
+        dots.setPager(pager);
+
+
     }
 }

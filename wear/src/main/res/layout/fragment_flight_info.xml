@@ -20,35 +20,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/dark_blue">
+    android:background="@drawable/bg_flight2">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:padding="16dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ABd2d2d2"
+        android:layout_gravity="bottom"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
         app:layout_box="all">
 
-        <Button
-            android:id="@+id/btn_card_fragment"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|top"
-            android:text="Card Fragment" />
+            android:text="SAW -> ESB is approaching"
+            android:textColor="@color/common_signin_btn_default_background"
+            android:paddingBottom="5dp"/>
 
-        <Button
-            android:id="@+id/btn_card_scrollview"
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="CardScrollView" />
+            android:text="Please proceed to gate G22"
+            android:textColor="@color/primary_text_light"/>
 
-        <Button
-            android:id="@+id/btn_card_listview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|bottom"
-            android:text="List" />
 
-    </FrameLayout>
+
+    </LinearLayout>
 
 </android.support.wearable.view.BoxInsetLayout>
