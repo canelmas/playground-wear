@@ -2,13 +2,15 @@
 
 Couple of samples showcasing Android Wear APIs.  
 
-This work was the primary preparation for *Developing for Android Wear* session in [ADD 2015] (http://www.androiddeveloperdays.com/2015/)
+This work was the primary preparation for **Developing for Android Wear** session in [ADD 2015] (http://www.androiddeveloperdays.com/2015/)
 
-Check out the presentation [Developing for Android Wear] (https://speakerdeck.com/canelmas/developing-for-android-wear)
+You may check the presentation [here] (https://speakerdeck.com/canelmas/developing-for-android-wear)
 
 # TakeAways
 
 Notes to self..
+
+Code and notes were written a year ago. So there might be couple of out dated things.
 
 ## 1. Adding Wearable Features to Notifications
 
